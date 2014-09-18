@@ -20,9 +20,11 @@ public interface Profiler {
 
   boolean isStopped();
 
+  Profiler setTextField(String key, String value);
+
   Profiler setFields(Object... keyValues);
 
   long getStartedAt();
 
-  long getDurationNs();
+  long getDurationMs();
 }

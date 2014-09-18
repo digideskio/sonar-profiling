@@ -12,8 +12,7 @@ public class Slf4jStore extends BaseStore {
 
   @Override
   protected void doStore(String log) {
-
+    logger.info(log);
   }
-
 
 }

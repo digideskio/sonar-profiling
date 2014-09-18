@@ -1,8 +1,6 @@
 package org.sonar.profiling;
 
 import javax.annotation.CheckForNull;
-import javax.annotation.Nullable;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -17,13 +15,17 @@ public class BaseProfiler implements Profiler {
   public BaseProfiler(long context, Store store) {
     this.context = context;
     this.store = store;
-    this.startedAt = System.nanoTime();
+    this.startedAt = now();
   }
 
   @Override
   public void stop() {
-    stopTime = System.nanoTime();
+    stopTime = now();
     store.store(this);
+  }
+
+  private long now() {
+    return System.currentTimeMillis();
   }
 
   @Override
@@ -38,15 +40,21 @@ public class BaseProfiler implements Profiler {
   }
 
   @Override
-  public Profiler setField(String key, @Nullable Object value) {
+  public Profiler setField(String key, Object value) {
     fields.put(key, value);
+    return this;
+  }
+
+  @Override
+  public Profiler setTextField(String key, String value) {
+    fields.put(key, value.replace("\n", "").replace("\r", ""));
     return this;
   }
 
   @Override
   public Profiler setFields(Object... keyValues) {
     for (int index = 0; index < keyValues.length; index++) {
-      fields.put((String)keyValues[index++], keyValues[index]);
+      fields.put((String) keyValues[index++], keyValues[index]);
     }
     return this;
   }
@@ -67,9 +75,9 @@ public class BaseProfiler implements Profiler {
   }
 
   @Override
-  public long getDurationNs() {
+  public long getDurationMs() {
     if (stopTime <= 0L) {
-      return System.nanoTime() - startedAt;
+      return now() - startedAt;
     }
     return stopTime - startedAt;
   }

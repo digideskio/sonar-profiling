@@ -8,7 +8,11 @@ public class Profilers {
   private static ProfilerRegistry registry = createDefault();
 
   public static Profiler start(String message) {
-    return registry.start(message);
+    return registry.start("msg", message);
+  }
+
+  public static Profiler start(Object... keyValues) {
+    return registry.start(keyValues);
   }
 
   public static void setRegistry(ProfilerRegistry r) {

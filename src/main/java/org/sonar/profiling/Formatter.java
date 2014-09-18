@@ -11,7 +11,7 @@ class Formatter {
     sb.append(", ctx=");
     sb.append(profiler.getContext());
     sb.append(", dur=");
-    sb.append(profiler.getDurationNs());
+    sb.append(profiler.getDurationMs());
     for (Map.Entry<String, Object> entry : profiler.getFields().entrySet()) {
       sb.append(", ");
       sb.append(entry.getKey());
