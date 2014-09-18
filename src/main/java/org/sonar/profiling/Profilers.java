@@ -24,7 +24,7 @@ public class Profilers {
   }
 
   private static ProfilerRegistry createDefault() {
-    SysoutStore store = new SysoutStore();
+    Store store = new SysoutStore();
     ContextFactory contextFactory = new UnsharedContextFactory();
     return new ProfilerRegistry().setStore(store).setContextFactory(contextFactory);
   }

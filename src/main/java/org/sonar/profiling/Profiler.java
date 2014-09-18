@@ -1,8 +1,6 @@
 package org.sonar.profiling;
 
 import javax.annotation.CheckForNull;
-import javax.annotation.Nullable;
-
 import java.util.Map;
 
 public interface Profiler {
@@ -14,13 +12,13 @@ public interface Profiler {
   
   Map<String,Object> getFields();
 
-  Profiler setField(String key, @Nullable Object value);
+  Profiler setField(String key, Object value);
+
+  Profiler setTextField(String key, String value);
 
   long getContext();
 
   boolean isStopped();
-
-  Profiler setTextField(String key, String value);
 
   Profiler setFields(Object... keyValues);
 

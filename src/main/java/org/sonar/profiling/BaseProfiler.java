@@ -1,5 +1,7 @@
 package org.sonar.profiling;
 
+import org.apache.commons.lang.StringEscapeUtils;
+
 import javax.annotation.CheckForNull;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -47,7 +49,10 @@ public class BaseProfiler implements Profiler {
 
   @Override
   public Profiler setTextField(String key, String value) {
-    fields.put(key, value.replace("\n", "").replace("\r", ""));
+    // remove newlines and escape characters ',' and '='
+    String replace = value.replace("\n", "").replace("\r", "");
+    replace = StringEscapeUtils.escapeCsv(replace);
+    fields.put(key, replace);
     return this;
   }
 
