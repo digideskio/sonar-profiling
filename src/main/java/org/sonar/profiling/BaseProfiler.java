@@ -31,6 +31,7 @@ public class BaseProfiler implements Profiler {
     return stopTime > 0L;
   }
 
+  @Override
   public long getContext() {
     return context;
   }

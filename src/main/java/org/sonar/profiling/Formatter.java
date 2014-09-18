@@ -5,7 +5,8 @@ class Formatter {
   static String format(Profiler profiler) {
     StringBuilder sb = new StringBuilder();
     sb.append("ctx=");
-    sb.append("msg=");
+    sb.append(profiler.getContext());
+    sb.append(", msg=");
     // TODO escape
     sb.append(profiler.getMessage());
     sb.append(", dur=");

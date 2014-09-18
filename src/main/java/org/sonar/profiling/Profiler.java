@@ -6,6 +6,8 @@ public interface Profiler {
 
   String getMessage();
 
+  long getContext();
+
   boolean isStopped();
 
   long getDurationNs();
