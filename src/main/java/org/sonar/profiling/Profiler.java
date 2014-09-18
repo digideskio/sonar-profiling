@@ -1,6 +1,12 @@
 package org.sonar.profiling;
 
 public interface Profiler {
-  Profiler start();
+  void start(String label);
   void stop();
+
+  String getLabel();
+
+  boolean isRunning();
+
+  boolean isStopped();
 }
