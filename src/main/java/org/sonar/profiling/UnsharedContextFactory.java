@@ -1,8 +1,8 @@
 package org.sonar.profiling;
 
-import javax.annotation.concurrent.ThreadSafe;
-
 import java.util.concurrent.atomic.AtomicLong;
+
+import javax.annotation.concurrent.ThreadSafe;
 
 /**
  * Each profiler has its own context, so no shared context
