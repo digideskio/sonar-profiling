@@ -23,6 +23,10 @@ public class ProfilerRegistry {
   }
 
   public Profiler start(String message) {
-    return new BaseProfiler(contextFactory.get(), store, message);
+    return new BaseProfiler(contextFactory.get(), store).setField("msg", message);
+  }
+
+  public Profiler start(Object... keyValues) {
+    return new BaseProfiler(contextFactory.get(), store).setFields(keyValues);
   }
 }
