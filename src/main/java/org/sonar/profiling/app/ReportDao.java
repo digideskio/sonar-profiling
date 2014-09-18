@@ -1,11 +1,13 @@
 package org.sonar.profiling.app;
 
+import org.sonar.profiling.streamers.SysoutPrinter;
+
 public class ReportDao {
     public void findReport(final String report) {
-        System.out.println("DAO - Report - find: " + report);
+        SysoutPrinter.print("DAO - Report - find: " + report);
     }
 
     public void persistReport(final String aggregatedReport) {
-        System.out.println("DAO - Report - persist: " + aggregatedReport);
+        SysoutPrinter.print("DAO - Report - persist: " + aggregatedReport);
     }
 }

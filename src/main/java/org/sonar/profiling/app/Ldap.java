@@ -1,7 +1,13 @@
 package org.sonar.profiling.app;
 
+import org.sonar.profiling.Profiler;
+import org.sonar.profiling.Profilers;
+import org.sonar.profiling.streamers.SysoutPrinter;
+
 public class Ldap {
     public void search(final String user) {
-        System.out.println("LDAP: " + user);
+        Profiler profiler = Profilers.start("PLdap: " + user);
+        SysoutPrinter.print("LDAP: " + user);
+        profiler.stop();
     }
 }
