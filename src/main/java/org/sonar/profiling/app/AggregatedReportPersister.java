@@ -1,7 +1,5 @@
 package org.sonar.profiling.app;
 
-import org.sonar.profiling.streamers.SysoutPrinter;
-
 public class AggregatedReportPersister {
     private final ReportDao dao = new ReportDao();
 

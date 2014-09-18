@@ -2,7 +2,6 @@ package org.sonar.profiling.app;
 
 import org.sonar.profiling.Profiler;
 import org.sonar.profiling.Profilers;
-import org.sonar.profiling.streamers.SysoutPrinter;
 
 public class ReportDao {
   public void findReport(final String report) {
