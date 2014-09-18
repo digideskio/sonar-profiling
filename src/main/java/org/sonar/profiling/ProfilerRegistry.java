@@ -1,17 +1,28 @@
 package org.sonar.profiling;
 
 public class ProfilerRegistry {
-  private final Store store;
-
-  public ProfilerRegistry(Store store) {
-    this.store = store;
-  }
-
-  public Profiler start(String message) {
-    return new BaseProfiler(store, message);
-  }
+  private Store store;
+  private ContextFactory contextFactory;
 
   public Store getStore() {
     return store;
+  }
+
+  public ProfilerRegistry setStore(Store store) {
+    this.store = store;
+    return this;
+  }
+
+  public ContextFactory getContextFactory() {
+    return contextFactory;
+  }
+
+  public ProfilerRegistry setContextFactory(ContextFactory contextFactory) {
+    this.contextFactory = contextFactory;
+    return this;
+  }
+
+  public Profiler start(String message) {
+    return new BaseProfiler(contextFactory.get(), store, message);
   }
 }

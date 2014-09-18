@@ -2,12 +2,14 @@ package org.sonar.profiling;
 
 public class BaseProfiler implements Profiler {
 
+  private final long context;
   private final Store store;
   private final long startTime;
   private long stopTime = 0L;
   private final String message;
 
-  public BaseProfiler(Store store, String message) {
+  public BaseProfiler(long context, Store store, String message) {
+    this.context = context;
     this.store = store;
     this.message = message;
     this.startTime = System.nanoTime();
@@ -27,6 +29,10 @@ public class BaseProfiler implements Profiler {
   @Override
   public boolean isStopped() {
     return stopTime > 0L;
+  }
+
+  public long getContext() {
+    return context;
   }
 
   @Override

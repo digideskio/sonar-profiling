@@ -1,7 +1,7 @@
 package org.sonar.profiling;
 
 /**
- * Shortcut
+ * Shortcut over ProfilerRegistry
  */
 public class Profilers {
 
@@ -21,6 +21,7 @@ public class Profilers {
 
   private static ProfilerRegistry createDefault() {
     SysoutStore store = new SysoutStore();
-    return new ProfilerRegistry(store);
+    ContextFactory contextFactory = new UnsharedContextFactory();
+    return new ProfilerRegistry().setStore(store).setContextFactory(contextFactory);
   }
 }
